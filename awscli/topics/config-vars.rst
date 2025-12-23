@@ -422,8 +422,7 @@ These configuration variables control how the AWS CLI retries requests.
     a single request, including the initial attempt.  For example,
     setting this value to 5 will result in a request being retried up to
     4 times.  If not provided, the number of retries will default to whatever
-    is modeled, which is typically 5 total attempts in the ``legacy`` retry mode,
-    and 3 in the ``standard`` and ``adaptive`` retry modes.
+    is modeled, which is 3 in the ``standard`` and ``adaptive`` retry modes.
 
 ``retry_mode``
     A string representing the type of retries the AWS CLI will perform.  Value
@@ -462,10 +461,19 @@ One option for UNIX systems is the ``LC_ALL`` environment variable. Setting
 ``LC_ALL=en_US.UTF-8``, for instance, would give you a United States English
 locale which is compatible with unicode.
 
-To set encoding used for text files different from the locale, you can use
+To set the encoding that is used when reading from text files, you can use the
 ``AWS_CLI_FILE_ENCODING`` environment variable. For example, if you use Windows
 with default encoding ``CP1252``, setting ``AWS_CLI_FILE_ENCODING=UTF-8`` would
 make CLI ignore locale encoding and open text files using ``UTF-8``.
+
+To set the encoding used for the CLI's output, you can use the
+``AWS_CLI_OUTPUT_ENCODING`` environment variable. For example, if you use Windows
+with the default encoding ``CP1252``, setting ``AWS_CLI_OUTPUT_ENCODING=UTF-8``
+would make CLI ignore the locale encoding and format its output using ``UTF-8``.
+
+Refer to
+`Python's Standard Encodings documentation <https://docs.python.org/3/library/codecs.html#standard-encodings>`_
+for possible values for both settings.
 
 Pager
 -----
